@@ -1,0 +1,19 @@
+---
+- name: Add User user1
+  user: name=user1
+        groups=sudo
+        append=yes
+
+- name: Adding keys to authorized_keys
+  authorized_key: user=user1 key="ssh-rsa AAAAB3NzaC1yc2EAAAABJQAAAQEA8w0pSj/M9m8y5JsHy46w7aTisIYaLlQmVZ9ro0qbAr/DL0+Va9CbnQ8uYs6FE86cGY/nbHbE/SBcBdeQyF3WqaNhrVkyXeDpK97lwSbi6qgmD2EK6pbUmYCcnxt0hqXSF8b92sOK66XYYEXBxWfhni/sRSct+JTWp6nxDtFy6LjUwWtGFMMzP+trV1F/HIXFRLOn/EuVKjPbBNz0qCxQH9RbuzN5DLIXf+6lx9kow1+MpDHBfEvR+KMZ4JV4gTySYlBT9MIx9rf7BjHiYr+F96Gxm07lyUT2FBkVze4VBes4A1OhCKbrt1st/8Fp0HaBOGJ80vE2OIq3iGcBz/2ksw== user1" path=/home/user1/.ssh/authorized_keys state=present
+  with_items: ssh_keys.results
+
+  
+- name: Add User user2
+  user: name=user2
+        groups=sudo
+        append=yes
+
+- name: Adding keys to authorized_keys
+  authorized_key: user=user2 key="ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDGvO/7Jtyq40MbrIH3QoeXr4wNx5OmZKqh0MzOAgc3Oeb4kvmwS8GyRLAzO2xsMAkG0aBd6hcFHXG7QcDAWGlCyNlkUF2x4d7UZCT7AIKGqgX/gDsKLVDzVAs7eHUHv/lAkMUg6T8IvUstbB+T7RGgYvDohLyYliRYZ4sX9Saa16oh2x9beXJLQBPxRVRgJWdQjGKMPWzcSEgfy+bkiHjc7Y1M0oSdve+khYqFQ45FuwDMRKaeDNfi2DfvMOXbDiF2nDHWNco/C2UqwDEw3mwy/xSrqu65iJ9gaScT/TETz/y2OZkhbg4w8bTKo6MGxd4u4VIORTyiSl1k/manAvFCZER0yASJ2UWyvcxkcdjbieWYILiMOmzFZ572E2HVtOwNf2liyi+W5o6MzCGJlnxcGgKSOBqWUCsMi12bv9blAuN87l7Xl8d/uaLza4Wjg2H3IN10X2kKZfhear6RGMXDVHKioPFbWX8CPMz0A+rn/+fNnZ9791/ui6icNsWb1UybLVivFITwf0fOQGck+LZKtq8NjU5eXGNMFmX4LA0zOD9t3/lCRzHi6oGWGILWDPLLLfZHSdLR7rC1Kj7GpJfxwdr6GE+h9Jf3LzlM57ZRT6TxOEo6ff6QE8wbNayhB6QAcYsX0BgVBHqvc1LwH7AtB48xeAoAQjyFzI9ASTbf1w== user2" path=/home/user2/.ssh/authorized_keys state=present
+  with_items: ssh_keys.results

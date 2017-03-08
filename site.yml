@@ -1,0 +1,7 @@
+---
+- name: Create Users
+  hosts: server-list
+  become: True
+
+  roles:
+      - { role: dereck.createusers,              tags: ["createusers"] }
